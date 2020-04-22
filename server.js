@@ -5,6 +5,8 @@ const requireDir = require('require-dir');
 
 //INICIANDO O APP
 const app = express();
+app.use(express.json());
+
 
 // INICIANDO O DB
 mongoose.connect('mongodb://192.168.99.100:27017/nodeapi', 
@@ -17,6 +19,6 @@ requireDir('./src/models');
 //const Product = mongoose.model('Product');
 
 //ROTAS
-app.use('/api', require('./src/routes'));
+app.use("/api", require("./src/routes"));
 
 app.listen(3001);

@@ -1,11 +1,12 @@
 const express = require('express');
 const routes = express.Router();
 
-const ProdctController = require('./controllers/ProductController');
+const ProductController = require('./controllers/ProductController');
 
 
-routes.get("/products", ProdctController.index);
-    /**', (req, res) =>{
+routes.get("/products", ProductController.index);
+routes.post("/products", ProductController.store);
+/**', (req, res) =>{
      * Product.create({
         title: "React Native",
         description: "Build native apps with React",
