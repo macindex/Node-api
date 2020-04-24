@@ -8,7 +8,8 @@ module.exports = {
 
         return res.json(products);
     },
-    async show(res, req){
+    async show(req, res){
+        //ERRO GERADO AO INVERTER (req, res) por (res,req)
         const product = await Product.findById(req.params.id);
 
         return res.json(product);
@@ -18,5 +19,23 @@ module.exports = {
         const product = await Product.create(req.body);
 
         return res.json(product);
-    }
+    },
+    async update(req, res){
+        const product = await Product.findByIdAndUpdate(req.params.id, req.body, {new: true});
+
+        return res.json(product);
+    //APOS A CRIACAO DO UPDATE CRIAR ROTA
+    //METODO FUNCIONA POREM APRESENTA WARNING
+
+    },
+
+    async destroy(req, res){
+        await Product.findByIdAndRemove(req.params.id);
+
+        return res.send();
+
+    },
+
+
+
 };
